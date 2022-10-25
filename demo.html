@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script type="text/javascript">
+        let sum = 0
+class Coffee{
+constructor(...order){
+    this.order = order
+        this.Expresso = {milk:60, cream:75, latte:100} 
+        this.Cappuccino = {milk:80, cream:90, latte:125}
+        this.Latte = {milk:100, cream:125, latte:150}
+    }
+    displayMenu() {
+        let items = ["Expresso","Cappuccino","Latte"]
+        let addOns = ["milk","cream","latte"]
+        let menu = "MENU CARD: \n\n"
+        for (let each of items) {
+            for (let type of addOns) {
+                menu += (`${each} with ${type} ------- ${this[each][type]} \n`)
+            }
+        }
+        console.log(menu)
+    }
+    billing() {
+        for (let each of this.order) {
+            console.log(`${each[0]} with ${each[1]} : ${this[each[0]][each[1]]}`)
+            sum += this[each[0]][each[1]]
+        }
+    }
+    totalBill() {
+        return sum
+    }
+}
+let a  = prompt(`Enter your coffee type \n  Ex: Expresso,Latte,Expresso`)
+let b =  prompt(`Enter your addon with respect to the COFFEE TYPE \n Ex: milk,cream,milk \n *no.of addons must be same as no.of coffees`)
+let values = a.split(",")
+let value = b.split(",")
+
+let c = new Coffee()
+c.displayMenu()
+for (let j in values){
+    c = new Coffee([values[j],value[j]])
+    c.billing()
+}
+console.log("totalbill:",sum)
+
+console.log(`                     HAVE A NICE COFFEE!`)
+    </script>
+</body>
+</html>
